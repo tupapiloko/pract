@@ -6,7 +6,6 @@
 // Post: Crea una entrada buida.
 Entrada::Entrada()
 {
-    simbol = ' ';
     frequencia = 0;
 }
 
@@ -97,8 +96,8 @@ bool Entrada::operator<(const Entrada &e) const
 //       estàndard de sortida.
 ostream &operator<<(ostream &os, const Entrada &e)
 {
-    os << "Simbol -> '" << e.getSimbol() << "'" << endl;
-    os << "Codificacio Huffman -> '" << e.getCodificacio() << "'" << endl;
-    os << "Frequencia -> " << e.getFrequencia() << endl;
+    os << "Simbol:" << e.getSimbol();
+    os << ", Frequencia: " << e.getFrequencia();
+    os << ", Codificacio: " << e.getCodificacio();
     return os;
 }

@@ -2,6 +2,9 @@
 #define TAULAFREQ_HPP
 
 #include "Entrada.hpp"
+#include <list>
+#include <map>
+
 using namespace std;
 
 class TaulaFreq
@@ -10,8 +13,9 @@ class TaulaFreq
 	// Descripció del tipus: Taula de símbols i freqüències per la codificació Huffman.
 
 private:
-	// COMPLETEU
+	list<Entrada> m;
 
+	// COMPLETEU
 public:
 	// Constructors
 
