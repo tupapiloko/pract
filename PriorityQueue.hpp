@@ -3,10 +3,12 @@
 using namespace std;
 
 template <typename T>
-class Queue {
+class Queue
+{
 
 private:
-  struct Item {
+  struct Item
+  {
     T value;
     Item *next;
   };
@@ -17,7 +19,8 @@ private:
 
   void copyItems(const Item *item, Item *(&first), Item *(&last), int &_size)
   {
-    if (item == NULL) {
+    if (item == NULL)
+    {
       first = NULL;
       last = NULL;
       _size = 0;
@@ -27,7 +30,8 @@ private:
     first->value = item->value;
     last = first;
     _size = 1;
-    while (item->next != NULL) {
+    while (item->next != NULL)
+    {
       last->next = new Item();
       last = last->next;
       item = item->next;
@@ -37,18 +41,19 @@ private:
     last->next = NULL;
   }
 
-
-  void deleteItems(Item *item) {
-    while (item != NULL) {
+  void deleteItems(Item *item)
+  {
+    while (item != NULL)
+    {
       Item *aux = item;
       item = item->next;
       delete aux;
     }
   }
-  
-public:
 
-  Queue() {
+public:
+  Queue()
+  {
     first = last = NULL;
     _size = 0;
   }
@@ -58,80 +63,121 @@ public:
     copyItems(q.first, first, last, _size);
   }
 
-  ~Queue() {
+  ~Queue()
+  {
     deleteItems(first);
     _size = 0;
   }
 
-  Queue &operator=(const Queue &q) {
-    if (this != &q) {
+  Queue &operator=(const Queue &q)
+  {
+    if (this != &q)
+    {
       deleteItems(first);
       copyItems(q.first, first, last, _size);
     }
     return *this;
   }
 
-  T front() {
-    if (first == NULL) {
+  T front()
+  {
+    if (first == NULL)
+    {
       cerr << "Error: front on empty queue" << endl;
       exit(0);
     }
     return first->value;
   }
 
-  void pop() {
-    if (first == NULL) {
+  void pop()
+  {
+    if (first == NULL)
+    {
       cerr << "Error: pop on empty queue" << endl;
       exit(0);
     }
     Item *aux = first;
-    first = first-> next;
+    first = first->next;
     delete aux;
     _size--;
-    if (first == NULL) last = NULL;
+    if (first == NULL)
+      last = NULL;
   }
 
-  void push(T value) {
-    
-	// PROGRAM THIS METHOD
-    
-	
+  void push(T value)
+  {
+    Item *i = new Item;
+    i->value = value;
+    Item *i2 = this->first;
+    if (i2 == NULL)
+    {
+      i->next = NULL;
+      this->first = i;
+    }
+    else if (i2->value > value)
+    {
+      i->next = i2;
+      this->first = i;
+    }
+    else
+    {
+      while (i2 != NULL)
+      {
+        if (i2->next == NULL)
+        {
+          i->next = NULL;
+          i2->next = i;
+          break;
+        }
+        else if (i2->next->value > value)
+        {
+          i->next = i2->next;
+          i2->next = i;
+          break;
+        }
+        i2 = i2->next;
+      }
+    }
+    ++_size;
+    // PROGRAM THIS METHOD
   }
-  
-  int size() {
+
+  int size()
+  {
     return _size;
   }
 
-  template<typename U> friend ostream &operator<<(ostream &os, Queue<U> &q);
+  template <typename U>
+  friend ostream &operator<<(ostream &os, Queue<U> &q);
 
-  template<typename U> friend istream &operator>>(istream &is, Queue<U> &q);
- 
+  template <typename U>
+  friend istream &operator>>(istream &is, Queue<U> &q);
 };
 
-
-template<typename U>
+template <typename U>
 ostream &operator<<(ostream &os, Queue<U> &q)
 {
-  os << q._size;
+  os << "Mida -> " << q._size << endl;
   for (typename Queue<U>::Item *item = q.first; item != NULL; item = item->next)
     os << " " << item->value;
   return os;
 }
 
-template<typename U>
+template <typename U>
 istream &operator>>(istream &is, Queue<U> &q)
 {
   int size;
   is >> size;
-  if (size == 0) {
-    q = Queue<U> ();
+  if (size == 0)
+  {
+    q = Queue<U>();
     return is;
   }
-  for (int i = 0; i < size; ++i) {
+  for (int i = 0; i < size; ++i)
+  {
     U x;
     cin >> x;
     q.push(x);
   }
   return is;
 }
-

@@ -1,14 +1,24 @@
 //#include "Huffman.hpp"
-#include "TaulaFreq.hpp"
+//#include "TaulaFreq.hpp"
+#include "PriorityQueue.hpp"
 using namespace std;
 
 int main()
-{
-	string s;
-	getline(cin, s);
-	TaulaFreq t;
-	t.construirTaula(s);
-	t.mostrarTaula();
+{ /*
+	 string s;
+	 getline(cin, s);
+	 TaulaFreq t;
+	 t.construirTaula(s);
+	 t.mostrarTaula(); */
+
+	Queue<int> c;
+
+	cin >> c;
+	cout << c;
+	c.push(0);
+	cout << endl;
+	cout << c;
+	cout << "front -> " << c.front() << endl;
 
 	// 1. Lectura del text d'entrada
 
