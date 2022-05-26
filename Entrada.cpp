@@ -17,6 +17,13 @@ Entrada::Entrada(char c, double f)
     frequencia = f;
 }
 
+// Pre:  f > 0
+// Post: Crea una entrada de símbol c sense codi Huffman.
+Entrada::Entrada(char c)
+{
+    simbol = c;
+}
+
 // Pre:
 // Post: Crea una entrada amb els valors de l'entrada e.
 Entrada::Entrada(const Entrada &e)

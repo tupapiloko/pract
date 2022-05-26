@@ -29,6 +29,11 @@ public:
     // Post: Crea una entrada de símbol c i freqüència f sense codi Huffman.
     Entrada(char c, double f);
 
+
+    // Pre:  f > 0
+    // Post: Crea una entrada de símbol c sense codi Huffman.
+    Entrada(char c);
+
     // Pre:
     // Post: Crea una entrada amb els valors de l'entrada e.
     Entrada(const Entrada &e);
