@@ -15,7 +15,7 @@ int main()
 
 	cin >> c;
 	cout << c;
-	c.push(0);
+	c.push(10);
 	cout << endl;
 	cout << c;
 	cout << "front -> " << c.front() << endl;

@@ -265,6 +265,7 @@ bool BinaryTree<T>::isEmpty() const
 template <typename T>
 bool BinaryTree<T>::operator<(const BinaryTree<T> &t) const
 {
+  return this->root < t.getRoot();
   // PROGRAM THIS METHOD
 }
 
@@ -423,11 +424,6 @@ void writeStringTree(std::ostream &os, const BinaryTree<T> &t)
     return;
   }
   writeStringTreeRec(os, t);
-}
-template <typename T>
-BinaryTree<T> &operator<(const BinaryTree<T> t1, const BinaryTree<T> t2)
-{
-  return t1.getRoot() < t2.getRoot();
 }
 
 #endif
